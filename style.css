@@ -1,0 +1,120 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+:root {
+	--primary: hsl(191 96% 63%);
+	--secondary: hsl(194 24% 56%);
+	--black: hsl(191 96% 13%);
+	--white: hsl(191 96% 93%);
+}
+
+header {
+	width: 100%;
+	line-height: 4rem;
+	color: var(--primary);
+	background-color: var(--black);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 50px;
+}
+
+header .menu-toggler {
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	display: none;
+	cursor: pointer;
+}
+
+header .menu-toggler span {
+	display: block;
+	width: 3rem;
+	height: .25rem;
+	background-color: var(--white);
+	margin: .25rem 0;
+	transition: all 0.3s ease;
+}
+
+.nav-open header .menu-toggler span:nth-child(1) {
+	transform: translateY(.7rem) rotate(45deg);
+}
+
+.nav-open header .menu-toggler span:nth-child(2) {
+	scale: 1 8;
+	opacity: 0;
+}
+
+.nav-open header .menu-toggler span:nth-child(3) {
+	transform: translateY(-0.75rem) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+	header .menu-toggler {
+		display: flex;
+	}
+
+	header nav {
+		display: flex;
+		align-items: center;
+	}
+
+	header nav ul {
+		display: flex;
+		list-style: none;
+		margin-left: 4rem;
+		flex-direction: column;
+	}
+
+	header nav ul li {
+		margin: 1rem 0;
+	}
+
+	header nav ul li a {
+		text-decoration: none;
+		color: var(--primary);
+		font-weight: 500;
+		font-size: 1.3rem;
+		margin: 0;
+		transition: all 0.3s ease;
+	}
+
+	header nav ul li a:hover {
+		color: var(--secondary);
+	}
+
+	header.nav-open nav {
+		right: 0;
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	header.nav-open nav ul li {
+		margin: 0;
+	}
+
+	header.nav-open nav ul li a {
+		font-size: 1.5rem;
+	}
+}
+
+header nav {
+	position: fixed;
+	top: 4rem;
+	width: 100%;
+	height: calc(100vh - 4rem);
+	background-color: var(--black);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	opacity: 0;
+	right: -100vw;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
