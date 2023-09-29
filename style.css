@@ -71,6 +71,7 @@ header {
 
 			& li {
 				margin: 0 1rem;
+				transition: transform 0.4s ease;
 
 				& a {
 					text-decoration: none;
@@ -78,7 +79,7 @@ header {
 					font-weight: 500;
 					font-size: 1.3rem;
 					margin: 0 2rem;
-					transition: all 0.3s ease;
+					transition: color 0.3s ease;
 
 					&:hover {
 						color: var(--secondary);
@@ -89,24 +90,27 @@ header {
 
 		@media (max-width: 768px) {
 			position: fixed;
-			top: 4rem;
-			width: 100%;
-			height: calc(100vh - 4rem);
-			background-color: var(--black);
+			top: 0;
+			width: 4rem;
+			height: 4rem;
+			border-radius: 4rem;
+			z-index: 9999;
+			background-color: var(--white);
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
 			opacity: 0;
-			right: -100vw;
+			right: 50px;
 			pointer-events: none;
-			transition: all 0.3s ease;
+			transition: .4s;
 
 			& ul {
 				flex-direction: column;
 
 				& li {
 					margin: 1rem 0;
+					transform: translate(100vw);
 
 					& a {
 						font-size: 1.5rem;
@@ -121,9 +125,22 @@ header {
 .nav-open {
 	& header {
 		& nav {
+			top: 4rem;
+			border-radius: 0;
 			right: 0;
+			height: calc(100vh - 4rem);
 			opacity: 1;
 			pointer-events: all;
+			width: 100%;
+			background-color: var(--black);
+			transition-property: top, right, width, height, border-radius, background-color;
+			transition-duration: 2s, .5s, .5s, 1s, 1s, 1s;
+			transition-delay: 0s, 0.5s, 0.75s, 1.5s, .5s, 1s;
+
+			& .nav-link {
+				transform: translate(0);
+				transition: transform 0.4s ease var(--delay);
+			}
 		}
 	}
 }
